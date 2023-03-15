@@ -1,5 +1,4 @@
-# name and number of the ADR
-01 - Cloud Service Provider 
+# 01 - Cloud Service Provider 
 
 ## Status
 Proposed

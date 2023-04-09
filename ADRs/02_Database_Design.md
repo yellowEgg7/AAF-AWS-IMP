@@ -16,12 +16,9 @@ Looking at several options we have decided to use Amazons RDS with SQL database,
 ### Consequences
 By choosing RDS with SQL with a rational database we will need to spend an amount of time before creating the application on the design process including creating data models, designing indexes and partitions. The team would also have to be trained on SQL and managing databases including database security. There may as well be more upfront costs in both hardware and training, however the below benefits outweigh them.
 The positive consequences of using this model will be that the requirements are more than met in terms of scalability, flexibility, and performance. 
-
-Scalable: due to it being a built-in service that automatically handles almost all off the operations involved, such as when scaling up the database or creating backups. 
-
-Flexibility: the use of the rational database will provide flexible data models that can accommodate the current note format and any future advanced ones. Complex queries can also be used to join tables and filter the database. 
-
-Performance: by using indexing, partitioning, and caching the performance of the database will be improved in terms of read and write operations. For example, indexing will speed up the retrieval of data and partitioning will improve write operations.
+* Scalable: due to it being a built-in service that automatically handles almost all off the operations involved, such as when scaling up the database or creating backups. 
+* Flexibility: the use of the rational database will provide flexible data models that can accommodate the current note format and any future advanced ones. Complex queries can also be used to join tables and filter the database. 
+* Performance: by using indexing, partitioning, and caching the performance of the database will be improved in terms of read and write operations. For example, indexing will speed up the retrieval of data and partitioning will improve write operations.
 
 ### Notes
 As a part of this decision, we looked at a multitude of different models but were unsatisfied with them as they would require heavy modification to the outstanding application. We found that RDS matches our criteria in the form of scalability, flexibility and performance and will be easier to implement as to not cause unnecessary disruption.

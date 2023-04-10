@@ -5,7 +5,7 @@
 Proposed
 
 ## Context
-As we are security conscious engineers’ security was bound to be an established trait however while looking at the application itself and migration to the cloud, we can see security as being a crucial component. The proper security controls must be implemented to not only protect confidentiality but availability of data. We must also comply with all regulation and best practices within handling data. In this context the security controls to be looked at will be the likes of security group rules, IAM policies, encryption, and monitoring to establish a secure cloud infrastructure.
+As security-conscious engineers we understand the gravity of establishing secure infrastructure when working with cloud base databases as to protect the conifidentially, integrity and availability of data. Therefore, The proper security controls must be implemented to not only protect confidentiality but availability of data. We must also comply with all regulation and best practices within handling data. In this context the security controls to be looked at will be the likes of security group rules, IAM policies, encryption, and monitoring to establish a secure cloud infrastructure.
 
 ### Assumptions
 When looking at security we will have to assume that our application will be subjected to various security threats such as unauthorised access, database breaches and DDoS attacks. We can also assume that we must comply with all regulation such as the General Data Protection Regulation act (GDPR). 

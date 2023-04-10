@@ -1,4 +1,4 @@
-# name and number of the ADR
+# Title
 [001 - Name of ADR]
 
 ## Status

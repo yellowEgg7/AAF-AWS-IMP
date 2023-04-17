@@ -21,5 +21,9 @@ The error handling processes chosen, while leading to more complexity and develo
 * Improved reliability and user experience: the addition of any level of error handling will allow the application to be perceived as more reliable. This is because it will lead to fewer downtimes and thus increased stability. The addition of the monitoring and alerting system will lead to much more descriptive error messages for the user allowing for a better understanding as to weather the error was on the front or back end meaning if it was to do with the application itself or on the user’s side.
 * Increased development time: these features will mean the development team will have to spend more time on the logging across the application to ensure everything works as expected at all times.
 
+## Diagram
+![Untitled Diagram drawio (11)](https://user-images.githubusercontent.com/118286503/232553351-d8ae60ea-372f-4e4a-8908-5801bd001352.png)
+
+
 ### Notes
 There is no real work around to not having error handling as errors are always bound to occur, especially with the use of complex code structures, thus the addition of the error handling processes has been examined in order to provide only the processes that are within the resource restrictions. 

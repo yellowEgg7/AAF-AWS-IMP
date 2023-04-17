@@ -25,6 +25,9 @@ While the addition of these security controls is overall a positive thing there 
 
 While these trade-offs seem viable for implementation the benefits ensure this, reduced risk of security incidents may be ideal for the firm as cleaning up a database breach may be much more costly than if they had just implemented these security features. Compliance with regulation being another strong benefit as implementing these security controls ensures that the firm is staying within regulation and away from legal or public relation risk. From a business standpoint the increase security controls will also add confidence to all stakeholders increasing internal and external relations with the firm as all parties feel their data is being kept secure.
 
+## Diagram
+![Untitled Diagram drawio (9)](https://user-images.githubusercontent.com/118286503/232553190-902a791b-c851-4e0f-864c-806c2752a476.png)
+
 
 ### Notes
 As these security features as implemented, we must ensure to constantly review and upgrade them regularly to ensure the infrastructure is kept secure. This can be done with annual security audits such as penetration testing to find vulnerabilities within the infrastructure and patches to them. 

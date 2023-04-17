@@ -21,5 +21,9 @@ With the use of beanstalk there are thresholds needed for when a scaleup is need
 The consequence of this decision is minimal as allowing the application to have a auto-scaling strategy will ensure it can handle influxes in volume and the option of expansion to the resources in the future. This will ultimately lead to a better overall user experience as there will be no downtimes when the system is running at high volumes. 
 However, there is always a risk that the autoscaling system will not work as intended or not at all and could lead to downtime if not configured correctly. There is no concern to the addition off higher costs as this is a built in AWS service and will be relatively easy to implement but concern must be made to make sure it is configured correctly. 
 
+##Diagram
+![Untitled Diagram drawio (11)](https://user-images.githubusercontent.com/118286503/232553421-0a635640-00c5-4f55-bc80-461a30766edd.png)
+
+
 ### Notes
 The performance of the application must be monitored to ensure that the auto scaling strategy works as intended with the thresholds being continually changed or modified as upgrades to the system are made within the future.

@@ -15,6 +15,9 @@ We decided to use AWS as the primary cloud service provider due to its large var
 ### Consequences
 Using AWS may result in our available services and tools being limited as we would only be able to use AWS-based applications. The company would also need to invest potentially copious amounts of time and cost into training engineers on AWS protocols and best practices. This is enforced with the addition of the security benefits of AWS and we engineers would need to be well coerced on the best practices to minimize any security threats to the application.
 
+## Diagram
+![Untitled Diagram drawio (7)](https://user-images.githubusercontent.com/118286503/232552744-0fa852ed-1cd1-4e56-bd12-ba81b282db04.png)
+
 ### Notes
 as part of this decision, we put research into other cloud services providers such as google cloud and Microsoft azure but found AWS to be the most efficient due to its reputation and reliability. 
 

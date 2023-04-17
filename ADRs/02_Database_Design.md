@@ -23,6 +23,10 @@ Flexibility: the use of the rational database will provide flexible data models 
 
 Performance: by using indexing, partitioning, and caching the performance of the database will be improved in terms of read and write operations. For example, indexing will speed up the retrieval of data and partitioning will improve write operations.
 
+## Diagram
+![Untitled Diagram drawio (8)](https://user-images.githubusercontent.com/118286503/232552983-9471e2b8-9d49-483b-9a74-7ab6177346fa.png)
+
+
 ### Notes
 As a part of this decision, we looked at a multitude of different models but were unsatisfied with them as they would require heavy modification to the outstanding application. We found that RDS matches our criteria in the form of scalability, flexibility and performance and will be easier to implement as to not cause unnecessary disruption.
 

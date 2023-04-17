@@ -19,5 +19,8 @@ The benefit of this form of deployment strategy is that it allows any issues or 
 The only drawback is that this strategy will require more resources to manage two different versions of the application, by running both applications this could put a strain on the cloud service and lead to complicated issues arising. if any issues are detected during this secondary deployment there may be unneeded time and effort to fix issues before attempting another deployment. 
 The trade off is worth it as we believe the benefits to outweigh the drawbacks. We believe this is the smoothest strategy to enable newer version to be released with the least amount of hassle.
 
+## Diagram
+![Untitled Diagram drawio (12)](https://user-images.githubusercontent.com/118286503/232553502-dcc85464-809d-4ec9-be95-fdb58c75dfcc.png)
+
 ### Notes
 The team will have to be trained to monitor the performance of both versions to identify any significant issues before they are to become sever for the entire userbase. Communication throughout the team will also have to be upheld so that no disruptions or miscommunication is made as new versions are released.

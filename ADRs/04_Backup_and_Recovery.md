@@ -25,5 +25,9 @@ Despite these consequences the implementation of a backup and recovery system is
 * Improved recovery time: in the event of a system failure due to data loss, backups will be available to be imported due to them not being affected as they are in a separate database, this means the downtime can be kept minimal.
 * Increased reliability: the backup and recovery plan will increase the overall reliability of the application due to the risk off data loss being depreciated.
 
+## Diagram 
+![Untitled Diagram drawio (10)](https://user-images.githubusercontent.com/118286503/232553257-575dad45-a1d3-4989-a447-220016f9565f.png)
+
+
 ### Notes
 The main thing to note is the continual testing of the system to make sure it operates as intended this is to ensure in an event of dire consequences the system will be able to save and maintain the data it is trying to protect. Regular testing will thus have to be done either in the form of reverse engineering the system or pen testing it.

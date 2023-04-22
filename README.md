@@ -34,9 +34,9 @@
   <li>Paste the code below</li>
 </ol>
 
-> git clone https://github.com/yellowEgg7/aaf-internal-notes-system
+> git clone https://github.com/yellowEgg7/AAF-AWS-IMP
 > 
-> cd aaf-internal-notes-system/01-notebook
+> cd AAF-AWS-IMP/01-notebook
 > 
 > npm i
 > 
@@ -52,4 +52,4 @@
 
 
 ## Contributers for this applciation
-This application is a modified forked from the orginal respoitory found at https://github.com/warwick-cybersecurity-WM145-24/aaf-internal-notes-system, This fork was created by JJ and Euan
+This application is a modified forked from the orginal respoitory found at https://github.com/warwick-cybersecurity-WM145-24/aaf-internal-notes-system, This fork was created by JJ and Kamdin

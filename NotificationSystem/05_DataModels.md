@@ -1,4 +1,4 @@
-# Data Models
+# Notification Data Model
 This document will provide the data model design for the notification system. 
 
 ## User Preferences

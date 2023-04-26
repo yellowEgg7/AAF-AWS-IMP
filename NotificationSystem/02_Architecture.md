@@ -39,3 +39,6 @@ Lambda - processes the notification and sends them to the channels.
 * Testing strategy created to ensure reliability.
 * Deployment process created.
 * Monitoring, logging, and alert system created.
+
+## Author
+JJ

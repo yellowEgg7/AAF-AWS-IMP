@@ -7,13 +7,15 @@ The API will be implemented using AWS API gateway and lambda functions. API gate
 ## API Endpoints
 ### Template
 This is the template endpoint that will be used for the event listener when the note is created.
-```Copy
+```
+Copy
   {
     "noteId": "string",
     "noteTitle": "string",
     "noteContent": "string",
     "userId": "string"
-  }```
+  } 
+  ```
 Response: A success notification or an error message.
 
 ### Discord API endpoint
@@ -21,12 +23,14 @@ This is the template endpoint that will be used for the event listener when the 
 Path: /notifications/discord
 Method: POST
 Request:
-```Copy
+```
+Copy
   {
     "userId": "string",
     "message": "string",
     "webhookUrl": "string"
-  }```
+  }
+```
 Response: A success notification or an error message.
 
 ### Slack API endpoint
@@ -34,12 +38,14 @@ This is the template endpoint that will be used for the event listener when the 
 path: /notifications/slack
 Method: POST
 Request:
-```Copy
+```
+Copy
   {
     "userId": "string",
     "message": "string",
     "webhookUrl": "string"
-  }```
+  }
+```
 Response: A success notification or an error message.
 
 ### Microsoft Teams API endpoint
@@ -47,12 +53,14 @@ This is the template endpoint that will be used for the event listener when the 
 path: /notifications/teams
 Method: POST
 Request:
-```Copy
+```
+Copy
   {
     "userId": "string",
     "message": "string",
     "webhookUrl": "string"
-  }```
+  }
+```
 Response: A success notification or an error message.
 
 ### Twilio API endpoint
@@ -60,14 +68,16 @@ This is the template endpoint that will be used for the event listener when the 
 path: /notifications/twilio
 Method: POST
 Request:
-```Copy
+```
+Copy
   {
     "userId": "string",
     "message": "string",
     "accountSid": "string",
     "authToken": "string",
     "phoneNumber": "string"
-  }```
+  }
+```
 Response: A success notification or an error message.
 
 ### Email API endpoint
@@ -75,14 +85,16 @@ This is the template endpoint that will be used for the event listener when the 
 path: /notifications/email
 Method: POST
 Request:
-```Copy
+```
+Copy
   {
     "userId": "string",
     "message": "string",
     "emailAddress": "string",
     "emailServiceProvider": "string",
     "apiKey": "string"
-  }```
+  }
+```
 Response: A success notification or an error message.
 
 ## Rate Limiting

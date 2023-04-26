@@ -33,3 +33,6 @@ This document will provide the deployment plan design for the notification syste
 * Deploy the notification system to a temporary environment for testing.
 * Deploy the notification system to the actual environment.
 * Monitor the system's performance logs and error reports and fix any errors.
+
+## Author
+JJ

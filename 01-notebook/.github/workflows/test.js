@@ -13,7 +13,6 @@ describe('Note API', () => {
       title: 'Test note',
       content: 'This is a test note'
     });
-
     expect(response.status).toBe(201);
     expect(response.data.title).toBe('Test note');
     expect(response.data.content).toBe('This is a test note');
@@ -22,14 +21,12 @@ describe('Note API', () => {
 
   test('should get a list of notes', async () => {
     const response = await axios.get(`${SERVER_URL}/notes`);
-
     expect(response.status).toBe(200);
     expect(response.data.length).toBeGreaterThan(0);
   });
 
   test('should get a single note', async () => {
     const response = await axios.get(`${SERVER_URL}/notes/${noteId}`);
-
     expect(response.status).toBe(200);
     expect(response.data.id).toBe(noteId);
   });
@@ -39,7 +36,6 @@ describe('Note API', () => {
       title: 'Updated note',
       content: 'This note has been updated'
     });
-
     expect(response.status).toBe(200);
     expect(response.data.title).toBe('Updated note');
     expect(response.data.content).toBe('This note has been updated');
@@ -47,10 +43,7 @@ describe('Note API', () => {
 
   test('should delete a note', async () => {
     const response = await axios.delete(`${SERVER_URL}/notes/${noteId}`);
-
     expect(response.status).toBe(204);
-
-    // verify that the note has been deleted
     const getResponse = await axios.get(`${SERVER_URL}/notes/${noteId}`);
     expect(getResponse.status).toBe(404);
   });

@@ -1,55 +1,37 @@
-# ACME Automotive Finance company internal note taking sytem 
+# ACME Automotive Finance Company Internal Note Taking System
 
-## Intended use of this application
-<p>This application is a simple JavaScript based notes taking system used by the accounts team of ACME Automotive Finance comapny to record their daily activities.</p>
+## Purpose
+This is a JavaScript-based application designed for the accounting team at ACME Automotive Finance Company to record their daily activities.
 
+## Features
+This application allows users to create and delete notes within the local database, with changes in real-time on the browser.
 
-## Features of this application
-<p>Within this application you can create and delete notes within the local database and have the changes displayed into the browser in real-time</p>
+## Requirements
+To use this application, you will need to have Git and Node.js installed on your local machine.
 
-
-### Requirements 
-<p>This application will require github to clone the repository to your lcoal machine. This can be installed by the following steps:</p>
-<ol>
-  <li>Open the terminal</li>
-  <li>Paste the code below - sudo password may be required</li>
-</ol>
-
+### Installing Git
+To install Git, follow these steps:
+* Open the terminal.
+* Paste the following code:
 > sudo apt install git-all
 
-<p>This application will also require a package manager for the Node JavaScript platform. This can be installed by the following steps:</p>
-<ol>
-  <li>Open the terminal</li>
-  <li>Paste the code below - sudo password may be required</li>
-</ol>
-
+### Installing Node.js
+To install Node.js, follow these steps:
+* Open the terminal.
+* Paste the following code:
 > sudo apt install npm
 
-
-## Getting started
-<p>To install:</p>
-<ol>
-  <li>Open the terminal</li>
-  <li>Navigate to selected directory to save the application</li>
-  <li>Paste the code below</li>
-</ol>
-
+## Getting Started
+To install and run the application, follow these steps:
+* Open the terminal.
+* Navigate to the directory where you want to save the application.
+* Paste the following code:
 > git clone https://github.com/yellowEgg7/AAF-AWS-IMP
-> 
 > cd AAF-AWS-IMP/01-notebook
-> 
 > npm i
-> 
 > npm start
+* Open your browser and paste the following link: http://127.0.0.1:8080
+## Contributors
+This application is a modified fork of the original repository found at https://github.com/warwick-cybersecurity-WM145-24/aaf-internal-notes-system. 
+This fork was created and worked on by JJ and Kamdin.
 
-<p>To run:</p>
-<ol>
-  <li>Open your browser</li>
-  <li>paste the below link into the broswer</li>
-</ol>
-
-> http://127.0.0.1:8080
-
-
-## Contributers for this applciation
-This application is a modified forked from the orginal respoitory found at https://github.com/warwick-cybersecurity-WM145-24/aaf-internal-notes-system, This fork was created by JJ and Kamdin

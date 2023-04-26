@@ -15,6 +15,9 @@ The data model will need to have a user preference feature to store the notifica
 }
 ‘’’ 
 
+## Diagram
+![DataModel Diagram](DataModelDiagram.png)
+
 ## Platform Configuration Details
 
 ### Discord

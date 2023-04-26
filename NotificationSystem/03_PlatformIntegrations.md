@@ -37,7 +37,7 @@ The email integration will use an amazon’s SES email provider to send the noti
 * The email service provider processes the request and sends the notification to the user’s email address.
 
 ## Error Handling
-each platform will have its own error handling functions to ensure the notifications are sent reliably. if an error happens the integration workflow will try again, if it does not send through after 5 times an alert to the dev team will be sent.
+Each platform will have its own error handling functions to ensure the notifications are sent reliably. if an error happens the integration workflow will try again, if it does not send through after 5 times an alert to the dev team will be sent.
 
 ## Next Steps
 * Implement the Lambda functions for each platform integration.
@@ -45,3 +45,6 @@ each platform will have its own error handling functions to ensure the notificat
 * Test the platform integrations to ensure they are working correctly.
 * Integrate the platform integrations with the notification manager.
 * Monitor and log the performance of the platform integrations.
+
+## Author
+JJ

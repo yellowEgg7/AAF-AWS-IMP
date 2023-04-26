@@ -19,3 +19,5 @@ We will offer the users the ability to choose the specific channel they want to 
 ## Scalability
 The system is designed with scalability at its heart being designed with the appropriate data structures and architecture patterns to handle the trend of a growing volume of users. 
 
+## Author
+JJ

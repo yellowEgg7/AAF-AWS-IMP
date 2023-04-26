@@ -5,7 +5,7 @@ This document will provide the data model design for the notification system.
 The data model will need to have a user preference feature to store the notification channel they choose. This will need to include the configuration details for the platform.
 
 ### User preference template
-‘’’ 
+```
 {
   "ID": "username",
   "platform": " Discord, Slack, Microsoft Teams, Twilio, and Email.",
@@ -13,7 +13,7 @@ The data model will need to have a user preference feature to store the notifica
     "webhook": "https://platformName/api/webhooks/xxx/xxx"
   }
 }
-‘’’ 
+```
 
 ## Diagram
 ![DataModel Diagram](DataModelDiagram.png)

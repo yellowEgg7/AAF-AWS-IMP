@@ -7,11 +7,11 @@ The reasoning for the system is to keep users informed about new notes that are 
 ## Supported Platforms
 The notification system supports the following platforms:
 
-1. **Discord**: Send notifications to a specified Discord channel using Discord Webhooks.
-2. **Slack**: Send notifications to a specified Slack channel using Slack Webhooks.
-3. **Microsoft Teams**: Send notifications to a specified Microsoft Teams channel using Incoming Webhooks.
-4. **Twilio**: Send SMS notifications to user’s mobile devices using the Twilio API.
-5. **Email**: Send email notifications to user’s email addresses using an email service provider.
+1. Discord: Send notifications to a specified Discord channel using Discord Webhooks.
+2. Slack: Send notifications to a specified Slack channel using Slack Webhooks.
+3. Microsoft Teams: Send notifications to a specified Microsoft Teams channel using Incoming Webhooks.
+4. Twilio: Send SMS notifications to user’s mobile devices using the Twilio API.
+5. Email: Send email notifications to user’s email addresses using an email service provider.
 
 ## User Preferences
 We will offer the users the ability to choose the specific channel they want to use for the notifications as to meet their best needs. They would have to provide their own configuration details, phone numbers, emails or webhook URLs.

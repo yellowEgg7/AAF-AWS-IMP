@@ -9,7 +9,7 @@ This document will provide the architecture design for the notification system.
 * Cache - caches the users’ preferences to reduce storage and improve the systems processing time. Implemented using Redis.
 Lambda - processes the notification and sends them to the channels.
 * API Gateway - secure and scalable way to send the lambda functions as HTTPS endpoints. This allows the notification manager to send the notification to the platforms via restful API.
-Monitoring & Logging – monitors the performance of the notification system to ensure function ability.
+* Monitoring & Logging – monitors the performance of the notification system to ensure function ability.
 
 ## Architecture Diagram
 ![Architecture Diagram](ArchitectureDiagram.png)

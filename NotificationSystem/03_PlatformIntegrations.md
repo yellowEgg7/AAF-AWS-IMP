@@ -45,4 +45,3 @@ each platform will have its own error handling functions to ensure the notificat
 * Test the platform integrations to ensure they are working correctly.
 * Integrate the platform integrations with the notification manager.
 * Monitor and log the performance of the platform integrations.
-

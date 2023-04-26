@@ -43,5 +43,5 @@ apiKey (string, optional): The API key or other credentials required for the ema
 The storage for this data model will be stored within the database used for the application. 
 
 ## Next Steps
-*Create the database table for the data model.
-*create the logic to retrieve the data from the database.
+* Create the database table for the data model.
+* create the logic to retrieve the data from the database.

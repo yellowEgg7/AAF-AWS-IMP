@@ -106,3 +106,6 @@ The API gateway will be used in conjunction with HTTPS to ensure a secure connec
 ## Next Steps
 * Create the lambda function for each platform.
 * Configure the API gateway endpoints 
+
+## Author
+JJ

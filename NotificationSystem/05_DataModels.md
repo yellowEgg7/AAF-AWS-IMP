@@ -45,3 +45,6 @@ The storage for this data model will be stored within the database used for the 
 ## Next Steps
 * Create the database table for the data model.
 * create the logic to retrieve the data from the database.
+
+## Author
+JJ

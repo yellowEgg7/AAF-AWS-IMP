@@ -1,0 +1,47 @@
+Description: EC2 setup for my application
+
+Parameters:
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+  MyIpAddress:
+    Description: CIDR block for the VPC
+    Type: String
+  UserDataScript:
+    Type: String
+  StackName:
+    Type: String
+
+Resources:
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Allow SSH and HTTP traffic"
+      VpcId: !ImportValue VpcId
+      SecurityGroupIngress:
+        - Description: Allow SSH traffic from my IP address
+          IpProtocol: tcp
+          ToPort: 22
+          FromPort: 22
+          CidrIp: !Ref MyIpAddress
+        - Description: Allow HTTP traffic from any IP address
+          IpProtocol: tcp
+          ToPort: 80
+          FromPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: !Sub "${StackName}-security-group"
+  
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+      SubnetId: !ImportValue SubnetId
+      Tags:
+        - Key: Name
+          Value: !Sub "${StackName}-ec2-instance"
+      UserData:
+        Fn::Base64: !Ref UserDataScript

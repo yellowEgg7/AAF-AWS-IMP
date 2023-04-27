@@ -55,7 +55,7 @@ curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -
 yum -y install nodejs
 
 echo "installing application" | tee -a "${logName}"
-(cd /home/ec2-user && git clone https://github.com/yellowEgg7/AAF-AWS-IMP/tree/main/01-notebook)
+(cd /home/ec2-user && git clone https://github.com/yellowEgg7/AAF-AWS-IMP/tree/main/01-notebook /home/ec2-user/kam-jj-sds2)
 
 echo "installing deps and starting application $(date)" | tee -a "${logName}"
-(cd /home/ec2-user/week-16-lab/app && npm install && DEBUG=* PORT=80 npm start)
+(cd /home/ec2-user/AAF-AWS-IMP/tree/main/01-notebook && npm install && DEBUG=* PORT=80 npm start)

@@ -33,7 +33,7 @@ jobs:
       run: |
         npm test.yml 
 
-        
+
     - name: Run lint
       working-directory: 01-notebook
       run: |
@@ -71,6 +71,18 @@ jobs:
         with:
           name: "${{ vars.STACK_NAME }}-network"
           template: deploy/template.yml
+
+
+
+          - name: Deploy EC2 to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: "${{ vars.STACK_NAME }}-server"
+          template: deploy/ec2-setup.yml
+          Tags: ${{ vars.TAGS }}
+          parameter-overrides:
+            myIpAddress=${{ secrets.MYIPADDRESS }}, 
+            UserDataScript= deploy/ec2-user-data.sh
           
 
 

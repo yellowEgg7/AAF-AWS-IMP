@@ -33,6 +33,11 @@ jobs:
       run: |
         npm test.yml 
 
+        
+    - name: Run lint
+      working-directory: 01-notebook
+      run: |
+        npm run lint
 
     # Deploy to AWS
     - name: Deployment

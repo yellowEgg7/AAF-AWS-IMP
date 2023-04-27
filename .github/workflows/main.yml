@@ -22,6 +22,11 @@ jobs:
     - name: Install dependencies
       run: npm install
       
+    # audit check
+    - name: npm audit
+      working-directory: notebook
+      run: npm audit
+          
     - name: Start server
       run: npm start & 
       env:

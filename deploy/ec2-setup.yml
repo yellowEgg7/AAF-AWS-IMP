@@ -1,6 +1,5 @@
 Description: Notes web app EC2
 
-
 Resources:
   SecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
@@ -15,8 +14,7 @@ Resources:
           FromPort: "80"
           ToPort: "80"
           CidrIp: "0.0.0.0/0"
-      VpcId:
-        Fn::ImportValue: !Sub "${stackName}-network-vpc"
+      VpcId: !ImportValue "aaf-network-vpc"
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-sg"
@@ -24,18 +22,17 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       InstanceType: "t2.micro"
-      ImageId: !Sub ${Linux2Ami}
       KeyName: "km-jj"
-      SubnetId:
-        Fn::ImportValue: aaf-network-pub-sub-vpc"
+      SubnetId: !ImportValue "aaf-network-pub-sub-vpc"
       SecurityGroupIds: 
         - !Ref SecurityGroup
       Tags:
         - Key: "Name"
           Value: "NotesEC2Instance"
       UserData:
-        Fn::Base64:
-          ${file(deploy-script.sh)}
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          echo "Hello World"
 Outputs:
   EC2IP:
     Description: Public IP of the EC2 Instance

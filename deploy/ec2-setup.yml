@@ -1,17 +1,8 @@
-scription: Notes web app EC2
+Description: Notes web app EC2
 
-Parameters:
-  # inject in the latest AMI
-  Linux2Ami:
-    Type: String
-  # used to open up ssh port
-  UserDataScript:
-    Type: String
-  stackName:
-    Type: String
 
 Resources:
-  NotesSecurityGroup:
+  SecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupDescription: "Allow SSH and HTTP traffic"
@@ -34,16 +25,17 @@ Resources:
     Properties:
       InstanceType: "t2.micro"
       ImageId: !Sub ${Linux2Ami}
-      KeyName: "aqil-standard"
+      KeyName: "km-jj"
       SubnetId:
         Fn::ImportValue: !Sub "${stackName}-network-pub-sub-vpc"
       SecurityGroupIds: 
-        - !Ref NotesSecurityGroup
+        - !Ref SecurityGroup
       Tags:
         - Key: "Name"
           Value: "NotesEC2Instance"
       UserData:
-        Fn::Base64: !Ref UserDataScript
+        Fn::Base64:
+          ${file(deploy-script.sh)}
 Outputs:
   EC2IP:
     Description: Public IP of the EC2 Instance

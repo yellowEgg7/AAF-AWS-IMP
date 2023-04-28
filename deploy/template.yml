@@ -1,112 +1,47 @@
-Description: AAF IaC template
+Description: EC2 for the notes web app
 
+Parameters:
+  # inject in the latest AMI
+  Linux2Ami:
+    Type: String
+  # used to open up ssh port
+  UserDataScript:
+    Type: String
+  stackName:
+    Type: String
 Resources:
-  VPC:
-    Type: AWS::EC2::VPC
+  NotesSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
     Properties:
-      CidrBlock: 10.0.0.0/16
-      EnableDnsSupport: true
-      EnableDnsHostnames: true
-      Tags:
-        - Key: Name
-          Value: MyVPC
-
-
-  PublicSubnet1:
-    Type: AWS::EC2::Subnet
+      GroupDescription: "Allow SSH and HTTP traffic"
+      SecurityGroupIngress:
+        - {
+            IpProtocol: "tcp",
+            FromPort: "22",
+            ToPort: "22",
+            CidrIp: "145.105.66.0/32"
+          }
+        - {
+            IpProtocol: "tcp",
+            FromPort: "80",
+            ToPort: "80",
+            CidrIp: "0.0.0.0/0"
+          }
+      VpcId: !ImportValue "${stackName}-network-vpc"
+      Tags: [{
+        Key: "Name",
+        Value: "${AWS::StackName}-sg"
+      }]
+  NotesEC2Instance:
+    Type: "AWS::EC2::Instance"
     Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.1.0/24
-      AvailabilityZone: eu-west-2a
-      Tags:
-        - Key: Name
-          Value: PublicSubnet1
-
-
-  PublicSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.2.0/24
-      AvailabilityZone: eu-west-2a
-      Tags:
-        - Key: Name
-          Value: PublicSubnet2
-
-
-  PrivateSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.3.0/24
-      AvailabilityZone: eu-west-2a
-      Tags:
-        - Key: Name
-          Value: PrivateSubnet1
-
-
-  PrivateSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.4.0/24
-      AvailabilityZone: eu-west-2a
-      Tags:
-        - Key: Name
-          Value: PrivateSubnet2
-
-
-  InternetGateway:
-    Type: AWS::EC2::InternetGateway
-    Tags:
-      - Key: Name
-        Value: !Sub "${AWS::StackName}-igw"
-
-
-  GatewayAttachment:
-    Type: AWS::EC2::VPCGatewayAttachment
-    Properties:
-      VpcId: !Ref VPC
-      InternetGatewayId: !Ref InternetGateway
-
-
-  PublicRoute:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: PublicRoute
-
-
-  PrivateRouteTable1:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: PrivateRouteTable1
-
-
-  PrivateRouteTable2:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: PrivateRouteTable2
-
-
-  PublicRoute:
-    Type: AWS::EC2::Route
-    DependsOn: GatewayAttachment
-    Properties:
-      RouteTableId: !Ref PublicRouteTable
-      DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref InternetGateway
-
-
-  PublicSubnet1RouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      Sub
+      InstanceType: "t2.micro"
+      ImageId: "${Linux2Ami}"
+      KeyName: "kam-jj"
+      SubnetId: !ImportValue "${stackName}-network-pub-sub-vpc"
+      SecurityGroupIds: [!Ref NotesSecurityGroup]
+      Tags: [{
+        Key: "Name",
+        Value: "NotesEC2Instance"
+      }]
+      UserData: !Base64 "${UserDataScript}"

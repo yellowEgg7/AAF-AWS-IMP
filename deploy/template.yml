@@ -12,7 +12,7 @@ Resources:
   PublicSubnet:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: eu-west-2
+      AvailabilityZone: eu-west-2a
       CidrBlock: 10.0.0.0/24
       VpcId: !Ref VPC
       Tags:
@@ -22,7 +22,7 @@ Resources:
   PrivateSubnet:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: eu-west-2
+      AvailabilityZone: eu-west-2a
       CidrBlock: 10.0.2.0/24
       VpcId: !Ref VPC
 
@@ -81,6 +81,7 @@ Resources:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupDescription: "Allow SSH and HTTP traffic"
+      VpcId: !Ref VPC
       SecurityGroupIngress:
         - IpProtocol: "tcp"
           FromPort: "22"
@@ -99,6 +100,13 @@ Resources:
           Key: "Name",
           Value: "${AWS::StackName}-sg"
         }]
+
+   EC2KeyPair:
+    Type: AWS::EC2::KeyPair
+    Properties:
+      KeyName: ssh_key
+      KeyType: rsa
+      PublicKeyMaterial: !Ref Key
 
   NotesEC2Instance:
     Type: "AWS::EC2::Instance"

@@ -1,6 +1,7 @@
 Description: Notes web app EC2
 
 Resources:
+
   SecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
     Properties:

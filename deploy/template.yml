@@ -1,19 +1,13 @@
 Description: EC2 for the notes web app
 
-Parameters:
-  # inject in the latest AMI
-  Linux2Ami:
-    Type: String
-  # used to open up ssh port
-  UserDataScript:
-    Type: String
-  stackName:
-    Type: String
 Resources:
   VPC:
     Type: AWS::EC2::VPC
     Properties: 
-      CidrBlock: 10.0.0.0/22 
+      CidrBlock: 10.0.0.0/22
+      Tags:
+        - Key: Name
+          Value: VPC
 
   PublicSubnet:
     Type: AWS::EC2::Subnet
@@ -22,8 +16,8 @@ Resources:
       CidrBlock: 10.0.0.0/24
       VpcId: !Ref VPC
       Tags:
-        - Value: PublicSubnet
-          Key: Name
+        - Key: Name
+          Value: PublicSubnet
 
   PrivateSubnet:
     Type: AWS::EC2::Subnet
@@ -34,10 +28,10 @@ Resources:
 
   InternetGateway:
     Type: AWS::EC2::InternetGateway
-    Tags:
-      - Key: Name
-        Value: !Sub "${AWS::StackName}-igw"
-
+    Properties:  
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-igw"
 
   GatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
@@ -45,15 +39,13 @@ Resources:
       VpcId: !Ref VPC
       InternetGatewayId: !Ref InternetGateway
 
-
-  PublicRoute:
+  PublicRouteTable:
     Type: AWS::EC2::RouteTable
     Properties:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: PublicRoute
-
+          Value: PublicRouteTable
 
   PrivateRouteTable1:
     Type: AWS::EC2::RouteTable
@@ -63,7 +55,6 @@ Resources:
         - Key: Name
           Value: PrivateRouteTable1
 
-
   PrivateRouteTable2:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -71,7 +62,6 @@ Resources:
       Tags:
         - Key: Name
           Value: PrivateRouteTable2
-
 
   PublicRoute:
     Type: AWS::EC2::Route
@@ -81,44 +71,42 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
 
-
   PublicSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
-      Sub
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
 
   NotesSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupDescription: "Allow SSH and HTTP traffic"
       SecurityGroupIngress:
-        - {
-            IpProtocol: "tcp",
-            FromPort: "22",
-            ToPort: "22",
-            CidrIp: "145.105.66.0/32"
-          }
-        - {
-            IpProtocol: "tcp",
-            FromPort: "80",
-            ToPort: "80",
-            CidrIp: "0.0.0.0/0"
-          }
+        - IpProtocol: "tcp"
+          FromPort: "22"
+          ToPort: "22"
+          CidrIp: "145.105.66.0/32"
+        - IpProtocol: "tcp"
+          FromPort: "80"
+          ToPort: "80"
+          CidrIp: "0.0.0.0/0"
 
-      VpcId: !ImportValue "${stackName}-network-vpc"
+  VpcId:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: 10.1.0.0/22
       Tags: [{
-        Key: "Name",
-        Value: "${AWS::StackName}-sg"
-      }]
-
+          Key: "Name",
+          Value: "${AWS::StackName}-sg"
+        }]
 
   NotesEC2Instance:
     Type: "AWS::EC2::Instance"
     Properties:
-      InstanceType: "t2.micro"
-      ImageId: "${Linux2Ami}"
+      InstanceType: "t3.micro"
+      ImageId: ami-0d76271a8a1525c1a
       KeyName: "kam-jj"
-      SubnetId: !ImportValue "${stackName}-network-pub-sub-vpc"
+      SubnetId: !Ref PrivateSubnet
       SecurityGroupIds: [!Ref NotesSecurityGroup]
       Tags: [{
         Key: "Name",

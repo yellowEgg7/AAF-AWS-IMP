@@ -1,1 +1,1 @@
-aws cloudformation delete-stack --stack-name kam-JJ
+aws cloudformation delete-stack --stack-name kam-JJ-stack

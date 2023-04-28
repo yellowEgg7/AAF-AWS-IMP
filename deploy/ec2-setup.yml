@@ -27,7 +27,7 @@ Resources:
       ImageId: !Sub ${Linux2Ami}
       KeyName: "km-jj"
       SubnetId:
-        Fn::ImportValue: !Sub "${stackName}-network-pub-sub-vpc"
+        Fn::ImportValue: aaf-network-pub-sub-vpc"
       SecurityGroupIds: 
         - !Ref SecurityGroup
       Tags:
@@ -39,6 +39,4 @@ Resources:
 Outputs:
   EC2IP:
     Description: Public IP of the EC2 Instance
-    Export:
-      Name: !Sub "${AWS::StackName}-ip-address"
     Value: !GetAtt NotesEC2Instance.PublicIp

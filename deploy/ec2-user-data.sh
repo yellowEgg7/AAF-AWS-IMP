@@ -35,6 +35,3 @@ echo "installing application" | tee -a "${logName}"
 
 echo "installing deps and starting application $(date)" | tee -a "${logName}"
 (cd /home/ec2-user/AAF-AWS-IMP/tree/main/01-notebook && npm install && DEBUG=* PORT=80 npm start)
-
-npm install
-npm start

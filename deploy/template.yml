@@ -1,5 +1,11 @@
 Description: EC2 for the notes web app
 
+Parameters:
+  UserData:
+    Type: String
+  Key:
+    Type: String
+
 Resources:
   VPC:
     Type: AWS::EC2::VPC
@@ -101,10 +107,10 @@ Resources:
           Value: "${AWS::StackName}-sg"
         }]
 
-   EC2KeyPair:
+  EC2KeyPair:
     Type: AWS::EC2::KeyPair
     Properties:
-      KeyName: ssh_key
+      KeyName: JKkey
       KeyType: rsa
       PublicKeyMaterial: !Ref Key
 
@@ -113,7 +119,7 @@ Resources:
     Properties:
       InstanceType: "t3.micro"
       ImageId: ami-0d76271a8a1525c1a
-      KeyName: "kam-jj"
+      KeyName: JKkey
       SubnetId: !Ref PrivateSubnet
       SecurityGroupIds: [!Ref NotesSecurityGroup]
       Tags: [{

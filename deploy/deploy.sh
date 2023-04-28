@@ -1,0 +1,1 @@
+aws cloudformation create-stack  --stack-name kam-JJ --template-body file://ec2-setup.yml --capabilities CAPABILITY_IAM

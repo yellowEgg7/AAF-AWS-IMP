@@ -1,12 +1,3 @@
-#!/bin/bash
-# This script is injected into the AWS vm on creation
-# and can be used to provision your VM
-# NB it's run as root, so no need for sudo
-
-# debug logs are here
-readonly logName="/var/log/server-setup.log"
-
-echo "Starting $(date)" | tee -a "${logName}"
 
 echo "Install required tools" | tee -a "${logName}"
 yum install -y \
@@ -18,27 +9,14 @@ yum install -y \
     curl \
     git
 
-# put your own github username here
 echo "Setting up ssh access keys" | tee -a "${logName}"
 curl -s https://github.com/kamdin84.keys | tee -a /home/ec2-user/.ssh/authorized_keys
 
-# add ec2 user to the docker group which allows docket to run without being a super-user
 usermod -aG docker ec2-user
 
-# running docker daemon as a service
 chkconfig docker on
 service docker start
 
-echo "Creating rudimentary web page for debugging this VM" | tee -a "${logName}"
-cat <<EOF >>/home/ec2-user/index.html
-<html>
-    <body>
-        <h1>Welcome Warwick WM145 peeps</h1>
-        <div>We hope you enjoy our debug page</div>
-        <div id="image"><img src="https://placedog.net/500/280" /></div>
-    </body>
-</html>
-EOF
 
 echo "Starting a debug nginx web server on port 8080" | tee -a "${logName}"
 docker run -d \
@@ -47,8 +25,6 @@ docker run -d \
     -p 8080:80 \
     nginx
 
-############################################################
-## 👇👇👇👇👇 application install commands here 👇👇👇👇👇
 
 echo "installing Nodejs using NVM" | tee -a "${logName}"
 curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -

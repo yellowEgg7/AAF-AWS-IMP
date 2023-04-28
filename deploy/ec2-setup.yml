@@ -1,0 +1,56 @@
+Description: Notes web app EC2
+
+Resources:
+
+  SecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Allow SSH and HTTP traffic"
+      SecurityGroupIngress:
+        - IpProtocol: "tcp"
+          FromPort: "22"
+          ToPort: "22"
+          CidrIp: "120.210.69.2/32"
+        - IpProtocol: "tcp"
+          FromPort: "80"
+          ToPort: "80"
+          CidrIp: "0.0.0.0/0"
+      VpcId: "vpc-0618adcd45e963647"
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-sg"
+  NotesEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: "t2.micro"
+      ImageId: ami-09744628bed84e434
+      KeyName: "km-jj"
+      SubnetId: !ImportValue "km-jj-notes-network-pub-subnet"
+      SecurityGroupIds: 
+        - !Ref SecurityGroup
+      Tags:
+        - Key: "Name"
+          Value: "NotesEC2Instance"
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          echo "Hello World"
+
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "kam-jj-notes-${AWS::AccountId}-${AWS::Region}"
+      Tags:
+        - Key: Name
+          Value: S3Bucket 
+
+Outputs:
+  EC2IP:
+    Description: Public IP of the EC2 Instance
+    Export:
+      Name: !Sub "${AWS::StackName}-ip-address"
+    Value: !GetAtt NotesEC2Instance.PublicIp
+  S3BucketName:
+    Description: S3 bucket name
+    Value: !Ref S3Bucket

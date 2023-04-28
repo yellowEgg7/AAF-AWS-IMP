@@ -14,7 +14,7 @@ Resources:
           FromPort: "80"
           ToPort: "80"
           CidrIp: "0.0.0.0/0"
-      VpcId: !ImportValue "aaf-network-vpc"
+      VpcId: "km-jj-notes-network-vpc"
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-sg"
@@ -23,7 +23,7 @@ Resources:
     Properties:
       InstanceType: "t2.micro"
       KeyName: "km-jj"
-      SubnetId: !ImportValue "aaf-network-pub-sub-vpc"
+      SubnetId: "km-jj-notes-network-pub-subnet"
       SecurityGroupIds: 
         - !Ref SecurityGroup
       Tags:
@@ -33,7 +33,21 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           echo "Hello World"
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "kam-jj-notes-${AWS::AccountId}-${AWS::Region}"
+      Tags:
+        - Key: Name
+          Value: S3Bucket 
+
 Outputs:
   EC2IP:
     Description: Public IP of the EC2 Instance
+    Export:
+      Name: !Sub "${AWS::StackName}-ip-address"
     Value: !GetAtt NotesEC2Instance.PublicIp
+  S3BucketName:
+    Description: S3 bucket name
+    Value: !Ref S3Bucket

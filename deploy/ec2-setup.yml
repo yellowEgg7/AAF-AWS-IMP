@@ -14,7 +14,7 @@ Resources:
           FromPort: "80"
           ToPort: "80"
           CidrIp: "0.0.0.0/0"
-      VpcId: "km-jj-notes-network-vpc"
+      VpcId: "vpc-0618adcd45e963647"
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-sg"
@@ -22,8 +22,9 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       InstanceType: "t2.micro"
+      ImageId: ami-09744628bed84e434
       KeyName: "km-jj"
-      SubnetId: "km-jj-notes-network-pub-subnet"
+      SubnetId: !ImportValue "km-jj-notes-network-pub-subnet"
       SecurityGroupIds: 
         - !Ref SecurityGroup
       Tags:
@@ -33,6 +34,7 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           echo "Hello World"
+
 
   S3Bucket:
     Type: AWS::S3::Bucket
